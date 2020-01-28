@@ -1,0 +1,18 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: books_admin
+    environment:
+      - APPLICATION_PORT=3310
+      - DATABASE_URL=postgres://javierlopez@host.docker.internal:5432/books_dev
+      - DATABASE_SCHEMA=public
+      - DATABASE_SSL=false
+      - FOREST_AUTH_SECRET=ef602d5fd38209ea87aedd4a56d2fd64156689c32e330c6fdcdb31d0707902140e27fbd70914b2625574accfa3239eb4
+      - FOREST_ENV_SECRET=fe2cb8e150bd1cdacb9b6e37fb9b484374cf3f6cd38fb87d9b0e0ed557bd3676
+    ports:
+      - "3310:3310"
+    volumes:
+      - ./:/usr/src/app
